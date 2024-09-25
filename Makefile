@@ -6,10 +6,9 @@ rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard ,$d, $2) $(filter $(
 SRC=$(call rwildcard, ./, *.c)
 
 .PHONEY: all
-all: $(OUT) run
+all: build run
 
-$(OUT):
-	@ echo Compilazione eseguibile
+build:
 	@ $(CC) $(SRC) -o $(OUT)
 
 run:
